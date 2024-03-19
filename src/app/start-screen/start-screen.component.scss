@@ -1,0 +1,33 @@
+.start-screen-container {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../assets/img/wood2.jpg');
+    background-size: cover;
+    background-position: center;
+
+    img {
+        width: 60%;
+        height: 80%;
+    }
+}
+
+.start-screen-btn-container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 14rem;
+        height: 5rem;
+
+        &:hover{
+            cursor: pointer;
+            filter: brightness(1.3);
+        }
+    }
+}
