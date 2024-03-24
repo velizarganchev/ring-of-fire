@@ -1,0 +1,20 @@
+.profil-container {
+    width: 280px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: orange;
+    >span {
+        font-size: 40px;
+        margin-left: 14px;
+    }
+
+    >img {
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+    }
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
