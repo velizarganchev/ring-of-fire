@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Game } from '../../models/game';
+import { GameInfoComponent } from '../game-info/game-info.component';
 import { PlayerComponent } from '../player/player.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -13,6 +14,7 @@ import { PlayerAddDialogComponent } from '../player-add-dialog/player-add-dialog
   imports: [
     CommonModule,
     PlayerComponent,
+    GameInfoComponent,
     MatButtonModule,
     MatIconModule,],
   templateUrl: './game.component.html',
@@ -36,6 +38,9 @@ export class GameComponent {
       this.currentCard = this.game.stack.pop()!;
       this.pickCardAnimation = true;
 
+      this.game.currentPlayer++;
+      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
@@ -46,8 +51,10 @@ export class GameComponent {
   openDialog(): void {
     const dialogRef = this.dialog.open(PlayerAddDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+    dialogRef.afterClosed().subscribe(name => {
+      if (name && name.length > 0) {
+        this.game.players.push(name);
+      }
     });
   }
 }
