@@ -3,6 +3,7 @@ import { Component, inject } from '@angular/core';
 import { Game } from '../../models/game';
 import { GameInfoComponent } from '../game-info/game-info.component';
 import { PlayerComponent } from '../player/player.component';
+import { PlayerMobileComponent } from '../player-mobile/player-mobile.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
@@ -18,6 +19,7 @@ import { ActivatedRoute } from '@angular/router';
   imports: [
     CommonModule,
     PlayerComponent,
+    PlayerMobileComponent,
     GameInfoComponent,
     MatButtonModule,
     MatIconModule,],
@@ -29,6 +31,7 @@ export class GameComponent {
 
   firestore: Firestore = inject(Firestore);
   game!: Game;
+  mobileTopNum: number = 45;
 
   constructor(
     public dialog: MatDialog,
@@ -47,11 +50,11 @@ export class GameComponent {
     if (!this.game.pickCardAnimation) {
       this.game.currentCard = this.game.stack.pop()!;
       this.game.pickCardAnimation = true;
-      
+
       this.game.currentPlayer++;
       this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
       this.gameService.updateGame(this.game);
-      
+
       setTimeout(() => {
         this.game.playedCards.push(this.game.currentCard);
         this.game.pickCardAnimation = false;

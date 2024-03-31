@@ -7,3 +7,27 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+// @media only screen and (max-height: 431px) and (max-width: 932px) and (orientation:landscape) {
+//     .hide-mobile {
+//         display: none !important;
+//     }
+// }
+
+// @media only screen and (min-height: 431px) and (min-width: 933px) and (orientation:landscape) {
+//     .hide-desktop {
+//         display: none !important;
+//     }
+// }
+
+@media (max-width: 720px) {
+    .hide-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 720px) {
+    .hide-desktop {
+        display: none !important;
+    }
+}

@@ -1,0 +1,7 @@
+mat-card {
+    min-height: 170px;
+
+    @media only screen and (max-height: 431px) and (orientation:landscape) {
+        min-height: 100px;
+    }
+}

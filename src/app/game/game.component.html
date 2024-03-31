@@ -1,6 +1,8 @@
 <div *ngIf="game">
     <app-player *ngFor="let p of game.players; let i = index;" [ngStyle]="{'top.px': 20 + (i * 85)}" [name]="p"
-        [playerActive]="i == game.currentPlayer" class="played-position" />
+        [playerActive]="i == game.currentPlayer" class="played-position hide-mobile" />
+    <app-player-mobile *ngFor="let p of game.players; let i = index;" [ngStyle]="{'top.px': 20 + (i * mobileTopNum)}"
+        [name]="p" [playerActive]="i == game.currentPlayer" class="played-position hide-desktop" />
     <div class="field">
         <div class="card-stack">
             <img *ngFor="let c of [0,1,2,3]; let i = index;" [ngStyle]="{'right.px': i * 5}"
